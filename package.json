@@ -1,0 +1,14 @@
+{
+  "name": "api-restful-ejcm",
+  "version": "1.0.0",
+  "description": "Repositório contendo a API REST desenvolvida para o PSI de projetos da EJCM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "v-giorgio",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
