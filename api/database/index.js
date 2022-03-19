@@ -1,10 +1,14 @@
 const Sequelize = require("sequelize");
 const config = require("../config/config");
 
-// import models
+const Users = require("../models/Users");
+const Books = require("../models/Books");
+const Authors = require("../models/Authors");
 
 const dbConnection = new Sequelize(config);
 
-// init models
+Users.init(dbConnection);
+Books.init(dbConnection);
+Authors.init(dbConnection);
 
 module.exports = dbConnection;
