@@ -148,4 +148,4 @@ class UserController {
   }
 }
 
-module.exports = MoviesController;
+module.exports = UserController;
