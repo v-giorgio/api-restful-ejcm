@@ -12,7 +12,7 @@ userRouter.put("/users/:id", UserController.updateUser);
 userRouter.delete("/users/:id", UserController.deleteUser);
 
 /* book-related routes */
-userRouter.get("/users/:id", UserController.getAllUserBooks);
+userRouter.get("/users/:userId/books", UserController.getAllUserBooks);
 userRouter.get("/users/:userId/book/:bookId", UserController.getOneUserBook);
 
 module.exports = userRouter;

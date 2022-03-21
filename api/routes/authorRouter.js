@@ -12,7 +12,10 @@ authorRouter.put("/authors/:id", AuthorController.updateAuthor);
 authorRouter.delete("/authors/:id", AuthorController.deleteAuthor);
 
 /* book-related routes */
-authorRouter.get("/authors/:authorId", AuthorController.getAllAuthorBooks);
+authorRouter.get(
+  "/authors/:authorId/books",
+  AuthorController.getAllAuthorBooks
+);
 authorRouter.get(
   "/authors/:authorId/book/:bookId",
   AuthorController.getOneAuthorBook
