@@ -75,7 +75,7 @@ class UserController {
     }
   }
 
-  /* user's books routes */
+  /* book-related routes */
   static async getAllUserBooks(req, res) {
     const { userId } = req.params;
 
@@ -99,49 +99,6 @@ class UserController {
       });
 
       return res.status(200).json(singleBook);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  static async createUserBook(req, res) {
-    const { userId } = req.params;
-    const newBook = { ...req.body, user_id: Number(userId) };
-    try {
-      const newUserBook = await Books.create(newBook);
-
-      return res.status(201).json(newUserBook);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  static async updateUserBook(req, res) {
-    const { userId, bookId } = req.params;
-    const update = req.body;
-    try {
-      await Books.update(update, {
-        where: { id: Number(bookId), user_id: Number(userId) },
-      });
-
-      const bookUpdated = await Books.findOne({
-        where: { id: Number(bookId) },
-      });
-      return res.status(200).json(bookUpdated);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  static async deleteUserBook(req, res) {
-    const { bookId } = req.params;
-
-    try {
-      await Books.destroy({
-        where: { id: Number(bookId) },
-      });
-
-      return res.status(204).json({ message: `Livro ${bookId} deletado.` });
     } catch (error) {
       return res.status(500).json(error.message);
     }

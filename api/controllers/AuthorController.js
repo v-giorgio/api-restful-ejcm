@@ -48,7 +48,7 @@ class AuthorController {
     }
   }
 
-  static async updateUAuthor(req, res) {
+  static async updateAuthor(req, res) {
     const { id } = req.params;
     const authorUpdate = req.body;
 
@@ -89,59 +89,15 @@ class AuthorController {
       return res.status(500).json(error.message);
     }
   }
-
   static async getOneAuthorBook(req, res) {
-    const { authorId, bookId } = req.params;
-
-    try {
-      const singleBook = await Books.findOne({
-        where: { id: Number(bookId), author_id: Number(authorId) },
-      });
-
-      return res.status(200).json(singleBook);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  static async createAuthorBook(req, res) {
     const { authorId } = req.params;
-    const newBook = { ...req.body, author_id: Number(authorId) };
-    try {
-      const newAuthorBook = await Books.create(newBook);
-
-      return res.status(201).json(newAuthorBook);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  static async updateAuthorBook(req, res) {
-    const { authorId, bookId } = req.params;
-    const update = req.body;
-    try {
-      await Books.update(update, {
-        where: { id: Number(bookId), author_id: Number(authorId) },
-      });
-
-      const bookUpdated = await Books.findOne({
-        where: { id: Number(bookId) },
-      });
-      return res.status(200).json(bookUpdated);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
-  static async deleteAuthorBook(req, res) {
-    const { bookId } = req.params;
 
     try {
-      await Books.destroy({
-        where: { id: Number(bookId) },
+      const book = await Books.findOne({
+        where: { author_id: Number(authorId) },
       });
 
-      return res.status(204).json({ message: `Livro ${bookId} deletado.` });
+      return res.status(200).json(book);
     } catch (error) {
       return res.status(500).json(error.message);
     }
