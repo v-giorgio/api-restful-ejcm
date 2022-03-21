@@ -90,11 +90,11 @@ class AuthorController {
     }
   }
   static async getOneAuthorBook(req, res) {
-    const { authorId } = req.params;
+    const { authorId, bookId } = req.params;
 
     try {
       const book = await Books.findOne({
-        where: { author_id: Number(authorId) },
+        where: { id: Number(bookId), author_id: Number(authorId) },
       });
 
       return res.status(200).json(book);

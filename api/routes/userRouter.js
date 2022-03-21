@@ -13,6 +13,6 @@ userRouter.delete("/users/:id", UserController.deleteUser);
 
 /* book-related routes */
 userRouter.get("/users/:id", UserController.getAllUserBooks);
-userRouter.get("/users/:id/book/:id", UserController.getOneUserBook);
+userRouter.get("/users/:userId/book/:bookId", UserController.getOneUserBook);
 
 module.exports = userRouter;
