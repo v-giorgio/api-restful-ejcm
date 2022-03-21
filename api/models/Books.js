@@ -5,7 +5,6 @@ class Books extends Model {
     super.init(
       {
         title: DataTypes.STRING,
-        author: DataTypes.STRING,
         editor: DataTypes.STRING,
         release_year: DataTypes.INTEGER,
         genre: DataTypes.STRING,

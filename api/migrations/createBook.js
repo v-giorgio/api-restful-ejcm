@@ -13,10 +13,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      author: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       editor: {
         type: Sequelize.STRING,
         allowNull: false,
