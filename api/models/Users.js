@@ -21,9 +21,7 @@ class Users extends Model {
   }
 
   static associate(models) {
-    Users.hasMany(models.Books, {
-      foreignKey: "user_id",
-    });
+    Users.hasMany(models.Books);
   }
 }
 

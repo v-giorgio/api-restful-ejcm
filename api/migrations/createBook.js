@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
       },
       release_year: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       genre: {
