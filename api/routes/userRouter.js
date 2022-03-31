@@ -1,5 +1,7 @@
 const { Router } = require("express");
 
+const Validations = require("../services/validations/validations");
+
 const UserController = require("../controllers/UserController");
 
 const userRouter = Router();
@@ -7,8 +9,16 @@ const userRouter = Router();
 /* user routes */
 userRouter.get("/users", UserController.getAllUsers);
 userRouter.get("/users/:id", UserController.getOneUser);
-userRouter.post("/users", UserController.createUser);
-userRouter.put("/users/:id", UserController.updateUser);
+userRouter.post(
+  "/users",
+  Validations.validateUser(),
+  UserController.createUser
+);
+userRouter.put(
+  "/users/:id",
+  Validations.validateUserUpdate(),
+  UserController.updateUser
+);
 userRouter.delete("/users/:id", UserController.deleteUser);
 
 /* book-related routes */
