@@ -1,5 +1,7 @@
-// import individual routers
+const bookRouter = require("./bookRouter");
+const userRouter = require("./userRouter");
+const authorRouter = require("./authorRouter");
 
 module.exports = (app) => {
-  // app.use()     -> add individual routers
+  app.use(userRouter, authorRouter, bookRouter);
 };

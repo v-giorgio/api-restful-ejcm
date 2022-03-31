@@ -13,16 +13,12 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      author: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       editor: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       release_year: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DATEONLY,
         allowNull: false,
       },
       genre: {

@@ -1,5 +1,7 @@
 const Books = require("../models/Books");
 
+const { validationResult } = require("express-validator");
+
 class BookController {
   /* Book routes */
   static async getAllBooks(req, res) {
@@ -24,18 +26,6 @@ class BookController {
     }
   }
 
-  static async getBookByName(req, res) {
-    const { name } = req.params;
-    try {
-      const book = await Books.findOne({
-        where: { title: name },
-      });
-      return res.status(200).json(book);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
   static async createBook(req, res) {
     const bookData = req.body;
 
@@ -50,6 +40,12 @@ class BookController {
         .json({ message: `O livro ${bookData.title} já foi cadastrado.` });
     }
 
+    /* run validators */
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
       const newBook = await Books.create(bookData);
 
@@ -62,6 +58,12 @@ class BookController {
   static async updateBook(req, res) {
     const { id } = req.params;
     const bookUpdate = req.body;
+
+    /* run validators */
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     try {
       await Books.update(bookUpdate, { where: { id: Number(id) } });
@@ -87,22 +89,9 @@ class BookController {
   }
 
   /* author-related routes */
-  static async removeAuthorFromBook(req, res) {
-    const { bookId } = req.params;
-    const removeAuthor = { author_id: 0 };
-
-    try {
-      await Books.update(removeAuthor, { where: { id: Number(bookId) } });
-
-      return res.status(204).json({ message: `Autor removido.` });
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
   static async changeBookAuthor(req, res) {
     const { bookId } = req.params;
-    const newAuthor = req.body;
+    const newAuthor = req.body.author_id;
 
     try {
       await Books.update(newAuthor, { where: { id: Number(bookId) } });
@@ -117,22 +106,9 @@ class BookController {
   }
 
   /* user-related routes */
-  static async removeUserBook(req, res) {
-    const { bookId } = req.params;
-    const removeUser = { user_id: 0 };
-
-    try {
-      await Books.update(removeUser, { where: { id: Number(bookId) } });
-
-      return res.status(204).json({ message: `Usuário removido.` });
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
   static async changeUserBook(req, res) {
     const { bookId } = req.params;
-    const newUser = req.body;
+    const newUser = req.body.user_id;
 
     try {
       await Books.update(newUser, { where: { id: Number(bookId) } });

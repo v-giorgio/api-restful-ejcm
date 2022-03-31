@@ -1,10 +1,12 @@
 const express = require("express");
 require("dotenv").config();
+require("./database");
+
+const routes = require("./routes");
 
 const cors = require("cors");
-// const routes = require('./routes');
 
-require("./database");
+// const routes = require('./routes');
 
 const port = process.env.PORT || 3000;
 
@@ -13,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// routes(app);
+routes(app);
 
 app.listen(port, () => {
   try {

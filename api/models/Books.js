@@ -5,9 +5,8 @@ class Books extends Model {
     super.init(
       {
         title: DataTypes.STRING,
-        author: DataTypes.STRING,
         editor: DataTypes.STRING,
-        release_year: DataTypes.INTEGER,
+        release_year: DataTypes.DATEONLY,
         genre: DataTypes.STRING,
       },
       {
@@ -18,12 +17,8 @@ class Books extends Model {
   }
 
   static associate(models) {
-    Books.belongsTo(models.Users, {
-      foreignKey: "user_id",
-    });
-    Books.belongsToMany(models.Authors, {
-      foreignKey: "author_id",
-    });
+    Books.belongsTo(models.Users);
+    Books.belongsToMany(models.Authors);
   }
 }
 

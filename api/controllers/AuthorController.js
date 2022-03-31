@@ -1,6 +1,8 @@
 const Authors = require("../models/Authors");
 const Books = require("../models/Books");
 
+const { validationResult } = require("express-validator");
+
 class AuthorController {
   /* Author routes */
   static async getAllAuthors(req, res) {
@@ -39,6 +41,12 @@ class AuthorController {
         .json({ message: `O autor ${authorData.name} já foi cadastrado.` });
     }
 
+    /* run validators */
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
       const newAuthor = await Authors.create(authorData);
 
@@ -51,6 +59,12 @@ class AuthorController {
   static async updateAuthor(req, res) {
     const { id } = req.params;
     const authorUpdate = req.body;
+
+    /* run validators */
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     try {
       await Authors.update(authorUpdate, { where: { id: Number(id) } });
@@ -90,11 +104,11 @@ class AuthorController {
     }
   }
   static async getOneAuthorBook(req, res) {
-    const { authorId } = req.params;
+    const { authorId, bookId } = req.params;
 
     try {
       const book = await Books.findOne({
-        where: { author_id: Number(authorId) },
+        where: { id: Number(bookId), author_id: Number(authorId) },
       });
 
       return res.status(200).json(book);

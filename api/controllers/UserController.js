@@ -1,6 +1,8 @@
 const Users = require("../models/Users");
 const Books = require("../models/Books");
 
+const { validationResult } = require("express-validator");
+
 class UserController {
   /* User routes */
   static async getAllUsers(req, res) {
@@ -39,6 +41,12 @@ class UserController {
         .json({ message: `O usuário ${userData.email} já foi cadastrado.` });
     }
 
+    /* run validators */
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
     try {
       const newUser = await Users.create(userData);
 
@@ -51,6 +59,12 @@ class UserController {
   static async updateUser(req, res) {
     const { id } = req.params;
     const userUpdate = req.body;
+
+    /* run validators */
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
     try {
       await Users.update(userUpdate, { where: { id: Number(id) } });

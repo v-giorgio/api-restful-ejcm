@@ -7,7 +7,6 @@ module.exports = {
       [
         {
           title: "IT",
-          author: "Stephen King",
           editor: "Suma",
           release_year: "1986-09-15",
           genre: "Terror",
@@ -18,7 +17,6 @@ module.exports = {
         },
         {
           title: "Me chame pelo seu nome",
-          author: "André Aciman",
           editor: "Intrinseca",
           release_year: "2018-01-05",
           genre: "Romance",
@@ -29,7 +27,6 @@ module.exports = {
         },
         {
           title: "Variações Enigma",
-          author: "André Aciman",
           editor: "Intrinseca",
           release_year: "2017-01-03",
           genre: "Romance",
@@ -40,7 +37,6 @@ module.exports = {
         },
         {
           title: "Misery",
-          author: "Stephen King",
           editor: "Intrinseca",
           release_year: "1987-06-08",
           genre: "Suspense",
@@ -51,7 +47,6 @@ module.exports = {
         },
         {
           title: "Duna",
-          author: "Frank Herbert",
           editor: "Aleph",
           release_year: "1965-06-01",
           genre: "Suspense",
