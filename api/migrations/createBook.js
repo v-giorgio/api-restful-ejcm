@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      author: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       editor: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -21,23 +25,11 @@ module.exports = {
         type: Sequelize.DATEONLY,
         allowNull: false,
       },
-      genre: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: "Users",
-          key: "id",
-        },
-      },
-      author_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "Authors",
           key: "id",
         },
       },

@@ -88,23 +88,6 @@ class BookController {
     }
   }
 
-  /* author-related routes */
-  static async changeBookAuthor(req, res) {
-    const { bookId } = req.params;
-    const newAuthor = req.body.author_id;
-
-    try {
-      await Books.update(newAuthor, { where: { id: Number(bookId) } });
-
-      const bookUpdated = await Books.findOne({
-        where: { id: Number(bookId) },
-      });
-      return res.status(200).json(bookUpdated);
-    } catch (error) {
-      return res.status(500).json(error.message);
-    }
-  }
-
   /* user-related routes */
   static async changeUserBook(req, res) {
     const { bookId } = req.params;

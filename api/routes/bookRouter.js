@@ -21,9 +21,6 @@ bookRouter.put(
 );
 bookRouter.delete("/books/:id", BookController.deleteBook);
 
-/* author-related routes */
-bookRouter.put("/books/author/:bookId", BookController.changeBookAuthor);
-
 /* user-related routes */
 bookRouter.put("/books/user/:bookId", BookController.changeUserBook);
 

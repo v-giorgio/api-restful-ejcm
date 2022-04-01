@@ -6,8 +6,8 @@ class Books extends Model {
       {
         title: DataTypes.STRING,
         editor: DataTypes.STRING,
-        release_year: DataTypes.DATEONLY,
-        genre: DataTypes.STRING,
+        author: DataTypes.STRING,
+        release_year: DataTypes.INTEGER,
       },
       {
         sequelize,
@@ -18,7 +18,6 @@ class Books extends Model {
 
   static associate(models) {
     Books.belongsTo(models.Users);
-    Books.belongsToMany(models.Authors);
   }
 }
 

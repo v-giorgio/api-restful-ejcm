@@ -91,29 +91,6 @@ class Validations {
     ];
   };
 
-  static validateAuthor = () => {
-    return [
-      body("name")
-        .exists()
-        .withMessage("Nome é obrigatório")
-        .isLength({ min: 1, max: 50 })
-        .withMessage("Tamanho inválido. Use: (min. 1, max: 50)")
-        .isString()
-        .withMessage("Formato de nome é String"),
-    ];
-  };
-
-  static validateAuthorUpdate = () => {
-    return [
-      body("name")
-        .optional()
-        .isLength({ min: 1, max: 50 })
-        .withMessage("Tamanho inválido. Use: (min. 1, max: 50)")
-        .isString()
-        .withMessage("Formato de nome é String"),
-    ];
-  };
-
   static validateBook = () => {
     return [
       body("title")
