@@ -8,7 +8,8 @@ module.exports = {
         {
           name: "Vitor",
           email: "vitor@hp.com.br",
-          password: "teste123",
+          hash: "teste123",
+          salt: "teste345",
           birthdate: "1980-08-20",
           street: "Rua dos Alfeneiros",
           neighborhood: "Alfeneiro",
@@ -20,7 +21,8 @@ module.exports = {
         {
           name: "Laura",
           email: "laura@hp.com.br",
-          password: "teste123",
+          hash: "teste123",
+          salt: "teste345",
           birthdate: "1986-04-24",
           street: "Rua dos Parisienses",
           neighborhood: "Parisiense",
@@ -32,7 +34,8 @@ module.exports = {
         {
           name: "Jorge",
           email: "jorge@hp.com.br",
-          password: "teste123",
+          hash: "teste123",
+          salt: "teste345",
           birthdate: "2005-08-20",
           street: "Rua dos Canais",
           neighborhood: "Canais",
@@ -44,7 +47,8 @@ module.exports = {
         {
           name: "André",
           email: "andre@hp.com.br",
-          password: "teste123",
+          hash: "teste123",
+          salt: "teste345",
           birthdate: "1994-10-11",
           street: "Rua dos Museus",
           neighborhood: "Museu",
@@ -56,7 +60,8 @@ module.exports = {
         {
           name: "Loras",
           email: "loras@hp.com.br",
-          password: "teste123",
+          hash: "teste123",
+          salt: "teste345",
           birthdate: "1980-08-25",
           street: "Rua dos Quadros",
           neighborhood: "Quadros",
