@@ -6,7 +6,8 @@ class Users extends Model {
       {
         name: DataTypes.STRING,
         email: DataTypes.STRING,
-        password: DataTypes.STRING,
+        hash: DataTypes.STRING,
+        salt: DataTypes.STRING,
         birthdate: DataTypes.DATEONLY,
         street: DataTypes.TEXT,
         neighborhood: DataTypes.STRING,
