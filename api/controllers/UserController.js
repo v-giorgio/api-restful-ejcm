@@ -1,6 +1,8 @@
 const Users = require("../models/Users");
 const Books = require("../models/Books");
 
+const Auth = require("../config/auth");
+
 const { validationResult } = require("express-validator");
 
 class UserController {
@@ -30,6 +32,8 @@ class UserController {
   static async createUser(req, res) {
     const userData = req.body;
 
+    // console.log(req.body);
+
     /* check if user already exists */
     if (
       await Users.findOne({
@@ -48,9 +52,27 @@ class UserController {
     }
 
     try {
-      const newUser = await Users.create(userData);
+      const { password } = req.body;
+      const hashAndSalt = Auth.generatePassword(password);
+      const salt = hashAndSalt.salt;
+      const hash = hashAndSalt.hash;
+      const newUserData = {
+        name: req.body.name,
+        email: req.body.email,
+        hash: hash,
+        salt: salt,
+        birthdate: req.body.birthdate,
+        street: req.body.street,
+        neighborhood: req.body.neighborhood,
+        street_number: req.body.street_number,
+        zipcode: req.body.zipcode,
+      };
 
-      return res.status(201).json(newUser);
+      // console.log(newUserData);
+
+      const user = await Users.create(newUserData);
+
+      return res.status(201).json(user);
     } catch (error) {
       return res.status(500).json(error.message);
     }
