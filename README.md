@@ -317,7 +317,7 @@ Resposta:<br>
 
 ```
 {
-	"message": "Filme 6 deletado"
+	"message": "Livro 6 deletado"
 }
 ```
 
