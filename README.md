@@ -290,7 +290,7 @@ Template para enviar os dados:
 <br>
 Resposta:<br>
 
-`/movies/6`
+`/books/6`
 
 ```
 {
